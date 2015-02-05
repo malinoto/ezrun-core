@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace Ezrun\Core;
 
 class Upload  extends BaseCore {
     

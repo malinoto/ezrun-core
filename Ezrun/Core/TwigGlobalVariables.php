@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace Ezrun\Core;
 
 class TwigGlobalVariables extends \Twig_Extension {
     

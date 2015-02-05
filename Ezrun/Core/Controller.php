@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace Ezrun\Core;
 
 class Controller extends BaseCore {
     
@@ -34,7 +34,7 @@ class Controller extends BaseCore {
     
     public function setClass() {
         
-        $controller_file = $this->getController() . '.controller.php';
+        $controller_file = $this->getController() . 'Controller.php';
         
         require_once(controllers_path . $controller_file);
         

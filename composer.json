@@ -10,14 +10,11 @@
         }
     ],
     "autoload": {
-        "psr-0": { "Ezrun\\Core\\": "" }
+        "classmap": [
+            "/"
+        ]
     },
     "require": {
-        "php": ">=5.4.16",
-        "symfony/yaml": "2.5.*",
-        "doctrine/orm": "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle": "~1.2",
-        "doctrine/common": "2.4.*",
-        "twig/extensions": "~1.0"
+        "php": ">=5.4.16"
     }
 }
