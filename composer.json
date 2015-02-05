@@ -3,6 +3,12 @@
     "license": "MIT",
     "type": "library",
     "description": "The \"EZRun Framework core files",
+    "authors": [
+        {
+            "name": "Malin Ivanov",
+            "email": "m.ivanov@webxploit-bg.com"
+        }
+    ],
     "autoload": {
         "psr-0": { "Ezrun\\Core\\": "" }
     },
