@@ -13,12 +13,5 @@
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/common": "2.4.*",
         "twig/extensions": "~1.0"
-    },
-    "extra": {
-        "ezrun-core-dir": "core",
-        "ezrun-web-dir": "web",
-        "incenteev-parameters": {
-            "file": "config/settings.yml"
-        }
     }
 }
