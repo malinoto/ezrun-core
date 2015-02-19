@@ -1,7 +1,7 @@
 <?php
 namespace Ezrun\Core;
 
-class TwigGlobalVariables extends \Twig_Extension {
+class TwigCustomExtension extends \Twig_Extension {
     
     protected $paramters;
     
@@ -13,7 +13,7 @@ class TwigGlobalVariables extends \Twig_Extension {
     public static function BaseCore() {
     }
     
-    public static function TwigGlobalVariables() {
+    public static function TwigCustomExtension() {
     }
     
     public function getName() {
@@ -38,6 +38,13 @@ class TwigGlobalVariables extends \Twig_Extension {
     public function getParameters() {
         
         return $this->parameters;
+    }
+    
+    public function getFunctions() {
+        
+        return array(
+            new \Twig_SimpleFunction('lipsum', array($this, 'generate_lipsum')),
+        );
     }
 
 }
