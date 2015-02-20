@@ -43,8 +43,7 @@ class TwigCustomExtension extends \Twig_Extension {
     public function getFunctions() {
         
         return array(
-            new \Twig_SimpleFunction('lipsum', array($this, 'generate_lipsum')),
+            new \Twig_SimpleFunction('form_head', array($this, 'renderFormHead')),
         );
     }
-
 }
