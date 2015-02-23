@@ -85,7 +85,10 @@ class Model extends BaseCore {
         //custom model database table
         if(isset($this->customDBTable) && !empty($this->customDBTable)) {
             
-            $this->dbTable = trim(db_prefix, '_') . '_' . $this->customDBTable;
+            if(!empty(db_prefix))
+                $this->dbTable = trim(db_prefix, '_') . '_' . $this->customDBTable;
+            else
+                $this->dbTable = $this->customDBTable;
         }
         //self model database table
         else {
