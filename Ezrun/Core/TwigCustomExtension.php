@@ -1,13 +1,17 @@
 <?php
 namespace Ezrun\Core;
 
+use Ezrun\Core\Translation\TwigTranslation;
+
 class TwigCustomExtension extends \Twig_Extension {
     
-    protected $paramters;
+    protected $parameters;
+    protected $translation;
     
     public function __construct(array $parameters) {
         
         $this->setParameters($parameters);
+        $this->setTranslation();
     }
     
     public static function BaseCore() {
@@ -40,10 +44,29 @@ class TwigCustomExtension extends \Twig_Extension {
         return $this->parameters;
     }
     
+    public function setTranslation() {
+        
+        $this->transaltion = new TwigTranslation;
+        
+        return $this;
+    }
+    
+    public function getTranslation() {
+        
+        return $this->transaltion;
+    }
+    
     public function getFunctions() {
         
         return array(
-            new \Twig_SimpleFunction('form_head', array($this, 'renderFormHead')),
+            new \Twig_SimpleFunction('trans', array($this->getTranslation(), 'translate')),
+        );
+    }
+    
+    public function getFilters() {
+        
+        return array(
+            new \Twig_SimpleFilter('trans', array($this->getTranslation(), 'translate')),
         );
     }
 }
