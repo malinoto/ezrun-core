@@ -9,9 +9,11 @@ class Translation {
     protected $language;
     protected $labels           = array();
     protected $cookie_lifetime  = 31536000; //1 year - 60 * 60 * 24 * 365
+    protected $use_cookie;
     
-    public function __construct() {
+    public function __construct($use_cookie = true) {
         
+        $this->setUseCookie($use_cookie);
         $this->setLanguage();
         $this->setTranslations();
     }
@@ -50,7 +52,7 @@ class Translation {
             
             $this->language = $_COOKIE[language_cookie];
         }
-        else {
+        else if($this->getUseCookie()) {
             
             setcookie(language_cookie, default_language, time() + $this->cookie_lifetime, "/", cookies_domain);
             $_COOKIE[language_cookie] = default_language;
@@ -62,5 +64,17 @@ class Translation {
     public function getLanguage() {
         
         return $this->language;
+    }
+    
+    public function setUseCookie($use_cookie) {
+        
+        $this->use_cookie = $use_cookie;
+        
+        return $this;
+    }
+    
+    public function getUseCookie() {
+        
+        return $this->use_cookie;
     }
 }

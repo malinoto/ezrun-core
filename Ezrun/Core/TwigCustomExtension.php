@@ -7,10 +7,12 @@ class TwigCustomExtension extends \Twig_Extension {
     
     protected $parameters;
     protected $translation;
+    protected $use_cookie;
     
-    public function __construct(array $parameters) {
+    public function __construct(array $parameters, $use_cookie = true) {
         
         $this->setParameters($parameters);
+        $this->setUseCookie($use_cookie);
         $this->setTranslation();
     }
     
@@ -46,7 +48,7 @@ class TwigCustomExtension extends \Twig_Extension {
     
     public function setTranslation() {
         
-        $this->transaltion = new TwigTranslation;
+        $this->transaltion = new TwigTranslation($this->getUseCookie());
         
         return $this;
     }
@@ -56,17 +58,35 @@ class TwigCustomExtension extends \Twig_Extension {
         return $this->transaltion;
     }
     
+    public function setUseCookie($use_cookie) {
+        
+        $this->use_cookie = $use_cookie;
+        
+        return $this;
+    }
+    
+    public function getUseCookie() {
+        
+        return $this->use_cookie;
+    }
+    
     public function getFunctions() {
         
         return array(
-            new \Twig_SimpleFunction('trans', array($this->getTranslation(), 'translate')),
+            new \Twig_SimpleFunction('trans', array(
+                $this->getTranslation(),
+                'translate'
+            )),
         );
     }
     
     public function getFilters() {
         
         return array(
-            new \Twig_SimpleFilter('trans', array($this->getTranslation(), 'translate')),
+            new \Twig_SimpleFilter('trans', array(
+                $this->getTranslation(),
+                'translate'
+            )),
         );
     }
 }
